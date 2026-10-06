@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
+
+:root {
+  /* Dynamic Brand Colors */
+  --brand-color: #3b82f6;
+  --brand-light: rgba(59, 130, 246, 0.1);
+
+  /* Light Theme (Default) */
+  --bg-navbar: #ffffff;
+  --bg-primary: #f8fbff;
+  --bg-secondary: #ffffff;
+  --text-main: #1a1a1a;
+  --text-muted: #6b7280;
+
+  --accent-mint: #d4f1e5;
+  --text-mint: #166534;
+  --accent-purple: #e9d5ff;
+  --text-purple: #6b21a8;
+  --accent-yellow: #fef3c7;
+  --text-yellow: #92400e;
+  --accent-pink: #fce7f3;
+  --text-pink: #9d174d;
+  --accent-blue: #dbeafe;
+  --text-blue: #1e40af;
+  --bg-glass: rgba(255, 255, 255, 0.7);
+  --border-color: rgba(0, 0, 0, 0.1);
+
+  /* Spacing & Effects */
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.07);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+[data-theme="dark"] {
+  --bg-navbar: #000000;
+  --bg-primary: #181818;
+  --bg-secondary: #222222;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent-mint: rgba(16, 185, 129, 0.2);
+  --text-mint: #10b981;
+  --accent-purple: rgba(139, 92, 246, 0.2);
+  --text-purple: #a78bfa;
+  --accent-yellow: rgba(245, 158, 11, 0.2);
+  --text-yellow: #fbbf24;
+  --accent-pink: rgba(236, 72, 153, 0.2);
+  --text-pink: #f472b6;
+  --accent-blue: rgba(59, 130, 246, 0.2);
+  --text-blue: #60a5fa;
+  --bg-glass: rgba(15, 23, 42, 0.8);
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Layout Classes */
+.glass-card {
+  background: var(--bg-glass, rgba(255, 255, 255, 0.85));
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.5));
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.soft-card {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.2s ease,
+    background-color 0.3s ease;
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.02));
+  position: relative;
+}
+
+.soft-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.badge {
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge-mint {
+  background: var(--accent-mint);
+  color: var(--text-mint);
+}
+.badge-purple {
+  background: var(--accent-purple);
+  color: var(--text-purple);
+}
+
+/* Sidebar icons specific style */
+.sidebar-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  color: var(--text-muted);
+}
+
+.sidebar-icon:hover {
+  background: var(--brand-color);
+  color: white;
+  transform: scale(1.05);
+}
+
+.sidebar-icon.active {
+  background: var(--brand-color);
+  color: white;
+}
+
+/* Settings Specific */
+.settings-view {
+  margin: 0 auto;
+}
+
+.active-section {
+  background: var(--brand-light) !important;
+}
+
+.theme-btn {
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.theme-btn:hover {
+  transform: translateY(-5px);
+}
+
+/* Global Floating Toolbar */
+.bottom-toolbar {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  padding: 0.6rem;
+  border-radius: 40px;
+  display: flex;
+  gap: 0.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 1000; /* Alto z-index para que flote sobre todo */
+}
+
+.toolbar-item {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.toolbar-item.active {
+  background: var(--brand-color);
+}
+
+.toolbar-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.toolbar-item.plus {
+  background: #4ade80;
+  color: black;
+}
+
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justifyContent: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  color: var(--text-main);
+  margin: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header .close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+}
+
+.modal-header .close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+}
+
+.primary-btn {
+  background: var(--brand-color);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}

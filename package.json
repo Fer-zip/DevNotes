@@ -1,0 +1,31 @@
+{
+  "name": "antigravity-template-monorepo",
+  "version": "1.0.0",
+  "description": "Plantilla Fullstack escalable optimizada para IA",
+  "main": "index.js",
+  "scripts": {
+    "install:all": "pnpm install && cd ai-agent && python -m venv venv && .\\venv\\Scripts\\activate && pip install -r requirements.txt",
+    "dev": "concurrently \"pnpm run client\" \"pnpm run server\" \"pnpm run ai-agent\"",
+    "client": "pnpm --filter client dev",
+    "server": "pnpm --filter server dev",
+    "web": "concurrently \"pnpm run client\" \"pnpm run server\"",
+    "ai-agent": "cd ai-agent && .\\venv\\Scripts\\python -m uvicorn main:app --reload --port 8000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "template",
+    "fullstack",
+    "clean-architecture",
+    "ai-optimized"
+  ],
+  "author": "Antigravity AI",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
