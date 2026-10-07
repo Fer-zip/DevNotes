@@ -388,7 +388,7 @@ const Notebook = ({
       .run();
 
     try {
-      const aiUrl = import.meta.env.AI_URL || "http://localhost:8000";
+      const aiUrl = import.meta.env.VITE_AI_URL || "http://localhost:8000";
       const response = await fetch(`${aiUrl}/api/chat/general`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
